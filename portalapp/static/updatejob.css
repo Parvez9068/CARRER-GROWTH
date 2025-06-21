@@ -1,0 +1,81 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #2686e7;
+}
+
+h1 {
+    color: #007bff;
+    text-align: center;
+    margin-top: 30px;
+    background-color: #1a71ce;
+    
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 800;
+    border-radius: 20px;
+    padding: 0%;
+}
+
+table {
+    width: 100%;
+    background-color: #d80a0a;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #237eda;
+}
+
+th {
+    background-color: #007bff;
+    color: #fff;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Hover effect on table rows */
+tr:hover {
+    background-color: #cce5ff;
+}
+.table td .btn-remove {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.table td .btn-remove:hover {
+    background-color: #c82333;
+}
+
+.table td .btn-accept {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.table td .btn-accept:hover {
+    background-color: #218838;
+}

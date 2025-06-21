@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% block title %}CareerGrowth | Dashboard{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <!-- Search Section -->
+    <div class="text-center mb-5">
+        <h1 class="fw-bold text-dark" style="font-size: 2.5rem;">Find Your Dream Job Now</h1>
+        <p class="text-secondary fs-5">Over 500,000 opportunities waiting for you!</p>
+    </div>
+
+    <!-- Search Bar -->
+    <div class="d-flex justify-content-center mb-4">
+        <form action="/searchjob" method="get" class="w-75">
+            <div class="input-group shadow-sm">
+                <span class="input-group-text bg-white border-0">
+                    <i class="bi bi-search text-muted"></i>
+                </span>
+                <input type="text" class="form-control border-0" name="q" id="searchInput" 
+                       placeholder="Title" style="font-size: 1.1rem;">
+                <button class="btn btn-warning text-white fw-bold" type="submit" style="border-radius: 0;">Search</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Display Search Query or Error Message -->
+    {% if query %}
+    <div class="text-center mb-4">
+        <h5 class="text-muted">Search Results for: <span class="text-dark fw-bold">{{ query }}</span></h5>
+        {% if errmsg %}
+        <p class="text-danger fs-5">{{ errmsg }}</p>
+        {% endif %}
+    </div>
+    {% endif %}
+
+    <!-- Job Cards -->
+    <div class="row gy-4">
+        {% for x in alljob %}
+        <div class="col-md-6 col-lg-4">
+            <div class="card shadow-sm border-0 h-100">
+                <div class="card-body">
+                    <h5 class="card-title text-uppercase text-primary fw-bold">{{ x.title }}</h5>
+                    <p class="text-muted mb-2">
+                        <i class="bi bi-building me-1"></i>{{ x.company }}
+                    </p>
+                    <p class="card-text small text-secondary">
+                        <i class="bi bi-geo-alt-fill text-warning"></i> {{ x.location }}<br>
+                        <i class="bi bi-currency-rupee text-success"></i> {{ x.salary }}<br>
+                        <i class="bi bi-clock-fill text-info"></i> {{ x.job_type }}<br>
+                        <i class="bi bi-person-fill text-secondary"></i> {{ x.experience }}<br>
+                        <i class="bi bi-calendar2-date-fill text-danger"></i> {{ x.days }}
+                    </p>
+                    <a href="{% url 'job_detail' jobid=x.pk %}" class="btn btn-outline-primary btn-sm mt-3">View Details</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Styles -->
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #eef6fd;
+    }
+    .card {
+        transition: transform 0.3s ease, box-shadow 1s ease;
+    }
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 5);
+    }
+    .input-group-text {
+        border-radius: 0.375rem 0 0 0.375rem;
+    }
+</style>
+
+<!-- Scripts -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const clearInputBtn = document.querySelector('.clear-input');
+        const searchInput = document.getElementById('searchInput');
+
+        clearInputBtn?.addEventListener('click', () => {
+            searchInput.value = '';
+            searchInput.focus();
+        });
+    });
+</script>
+{% endblock %}

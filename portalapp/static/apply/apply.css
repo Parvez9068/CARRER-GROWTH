@@ -1,0 +1,24 @@
+.job-application-form label {
+    font-weight: bold;
+    color: #333; /* Set label text color */
+}
+
+.job-application-form input[type="text"],
+.job-application-form input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.job-application-form input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.job-application-form .btn-primary {
+    margin-top: 20px;
+}

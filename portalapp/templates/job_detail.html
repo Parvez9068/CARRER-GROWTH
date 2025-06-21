@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% block title %}CareerGrowth | Job Detail{% endblock %}
+{% block body %}
+{% if messages %}
+<div class="container mt-4">
+    {% for message in messages %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+<div class="container mt-5" style="padding-top: 0%;">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card job-details" style="margin-top: 0px; background-color: #f0f0f0;">
+                <div class="card-body">
+                    <h4 class="job-title text-center" style="background-color: #006400; padding: 10px 0; border-radius: 10px; text-transform: uppercase;width: auto;">{{ job.title }}</h4>
+                    <div class="row" style='padding-top:10px;text-transform:capitalize'>
+                        <div class="col-md-6">
+                            <p class="job-info" style="font-weight: bold;"><i class="bi bi-building"></i> Company: {{ job.company }}</p>
+                            <p class="job-info" style="font-weight: bold;"><i class="bi bi-geo-alt-fill"></i> Location: {{ job.location }}</p>
+                            <p class="job-info" style="font-weight: bold;"><i class="bi bi-front"></i> Job Type: {{ job.job_type }}</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p class="job-info" style="font-weight: bold;"><i class="bi bi-currency-rupee"></i> Salary: {{ job.salary }}</p>
+                            <p class="job-info" style="font-weight: bold;"><i class="bi bi-box-fill"></i> Experience: {{ job.experience }}</p>
+                            <p class="job-info" style="font-weight: bold;"><i class="bi bi-calendar-day-fill"></i> Working Days: {{ job.days }}</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <p class="job-description" style="font-weight: bold; text-transform: uppercase;">Description</p>
+                    <p>{{ job.description }}</p>
+                    <hr>
+                    <p class="job-description" style="font-weight: bold; text-transform: uppercase;">Openings</p>
+                    <p>{{ job.nop }}</p>
+                    <hr>
+                    <p class="job-requirements" style="font-weight: bold; text-transform: uppercase;">Skills</p>
+                    <p>{{ job.requirements }}</p>
+
+                    <!-- Displaying the count of applicants for this job -->
+                    <hr>
+                    <p class="job-description" style="font-weight: bold; text-transform: uppercase;">Number of Applicants</p>
+                    <p>{{ applicants.count }}</p> <!-- Using the count property of queryset -->
+
+                    <!-- Save Job button with icon -->
+                    <div class="text-center mt-4">
+                        {% if user.is_authenticated and user != job.user %}
+                            <a href="{% url 'save_job' job_id=job.pk %}" class="btn btn-primary mx-2" style="background-color: #007bff; border-color: #007bff;">
+                                <i class="bi bi-heart"></i> Save Job
+                            </a>
+                            <a href="{% url 'apply_for_job' jobid=job.pk %}" class="btn btn-success mx-2" style="background-color: #006400;">Apply for this job</a>
+                        {% elif user.is_authenticated and user == job.user %}
+                            <p class="text-center text-danger">You cannot apply for your own job posting.</p>
+                        {% else %}
+                            <a href="{% url 'signin' %}" class="btn btn-primary mx-2">Sign in to apply for this job</a>
+                        {% endif %}
+                        <a href="/" class="btn btn-danger mx-2">Cancel</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

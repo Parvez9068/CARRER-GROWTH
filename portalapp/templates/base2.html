@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'base.css' %}">
+    <link rel="stylesheet" href="{% static 'dashboard.css' %}">
+    <link rel="stylesheet" href="{% static 'signin.css' %}">
+    <link rel="stylesheet" href="{% static 'login/sign.css' %}">
+    <link rel="stylesheet" href="{% static 'login/signup.css' %}">
+    <link rel="stylesheet" href="{% static 'index.css' %}">
+    <link rel="stylesheet" href="{% static 'jobdetail.css' %}">
+    <link rel="stylesheet" href="{% static 'registerjob.css' %}">
+    <link rel="stylesheet" href="{% static 'all_applicant.css' %}">
+    <link rel="stylesheet" href="{% static 'apply/apply.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.3/font/bootstrap-icons.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
+    <style>
+        /* Sticky footer styles */
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+
+        .content-wrapper {
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content {
+            flex: 1;
+        }
+
+        footer {
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            
+            padding: 20px 0;
+            background-color: #333;
+            color: white;
+            text-align: center;
+        }
+
+        footer .footer-social-icons a {
+            margin: 0 10px;
+            color: white;
+            text-decoration: none;
+        }
+
+        footer .footer-social-icons a:hover {
+            color: #80ca2b; /* Color change on hover */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content-wrapper">
+        <!--header start here-->
+        <nav class="navbar navbar-expand-lg" style="background-color: #6b6d6f">
+            <div class="container-fluid">
+                {% if user.is_authenticated %}
+                <a class="navbar-brand" href="/index">CareerGrowth Employers       <i class="fa-solid fa-rss" style="margin-right:0px;color: rgb(80, 202, 43);height: 40px;"> </i></a>
+                {% else %}
+                <a class="navbar-brand" href="/">CareerGrowth<i class="fa-solid fa-rss" style="margin-right:0px;color: rgb(80, 202, 43);height: 40px;"></i></a>
+                {% endif %}
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="/registerjob">Post Jobs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/userlogout">Logout</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'all_job_applicants' %}">Applicants</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/index">Jobs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'selected_candidates' %}">Selected Candidates</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                    {% if user.is_authenticated %}
+                    <b style="color: white;">Welcome {{user}}!!</b>
+                    {% else %}
+                    <b style="color:white">Welcome Freshers!!</b>
+                    {% endif %}
+                    <form class="d-flex search-form" role="search" method="get" action="/searchjob2">
+                        <input class="form-control me-2" name="q" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-success btn-search" style="background-color: #006400;" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+        <!--header end here-->
+
+        {% block body %}
+        <!-- Content here -->
+        {% endblock %}
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer"style="background-color: #6b6d6f;" >
+        <div class="container">
+            <div class="row" >
+                <div class="col-md-4">
+                    <h5>Connect with Us</h5>
+                    <div class="footer-social-icons">
+                        <a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://twitter.com/?lang=en"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.linkedin.com/home?originalSubdomain=in"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+                    </div>
+                    <div class="app-download">
+                        <a href="https://play.google.com/store"><img src="https://static.naukimg.com/s/0/0/i/new-homepage/android-app_v1.png" alt="Play Store"></a>
+                        <a href="#"><img src="https://static.naukimg.com/s/0/0/i/new-homepage/ios-app_v1.png" alt="App Store"></a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="carriaradvise.html">Career advice</a></li>
+                        <li><a href="aboutus.html">About Us</a></li>
+                        <li><a href="helpcenter.html">Help center</a></li>
+                        <li><a href="privacy.html">Privacy policy</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Rate us</h5>
+                    <div class="footer-social-icons">
+                        <a href="#"><i class="fas fa-star"></i></a>
+                        <a href="#"><i class="fas fa-star"></i></a>
+                        <a href="#"><i class="fas fa-star"></i></a>
+                        <a href="#"><i class="fas fa-star"></i></a>
+                        <a href="#"><i class="fas fa-star"></i></a>
+                        <h3>CareerGrowth</h3>
+                        <p>&copy; 2024 CareerGrowth | Developed by PARVEZ</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Footer end here -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+
+</html>

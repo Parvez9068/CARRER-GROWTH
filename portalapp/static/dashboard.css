@@ -1,0 +1,47 @@
+
+.card {
+    border-radius: 10px;
+    border-color: #605f5f;
+    box-shadow: 0 4px 6px rgba(56, 56, 56, 0.1);
+}
+
+.card-title {
+    font-size: 1.5rem;
+    color: #007bff;
+    margin-bottom: 0.3rem;
+    margin-left: 10px;
+    text-transform: capitalize;
+}
+
+.card-text {
+    font-size: 1rem;
+    color: #333;
+    margin-left: 10px;
+    font-weight: 500;
+}
+
+.card-text.mb-4 {
+    margin-bottom: 1.5rem !important;
+}
+
+.card-text.mb-2 {
+    margin-bottom: 0.75rem !important;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.text-primary {
+    color: #007bff !important;
+}
+
+.text-muted {
+    color: #6c757d !important;
+}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}CareerGrowth | Job Applicants{% endblock %}
+{% block body %}
+<div class="container mt-3">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h2>Applicants for: {{ job.title }}</h2>
+            <ul>
+                {% for applicant in applicants %}
+                <li>{{ applicant.name }} - {{ applicant.email }} - {{applicant.resume}}</li>
+                <!-- Display other applicant information as needed -->
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

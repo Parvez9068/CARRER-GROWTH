@@ -1,0 +1,121 @@
+Global Styles
+body {
+    font-family: Arial, sans-serif;
+    /* Add padding to bottom of body*/
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: #394034; /* Navbar background color*/
+}
+
+.navbar-brand {
+    color: #fff !important; /* Navbar brand color*/
+    font-weight: bold;
+}
+
+.navbar-nav .nav-link {
+    color: #fff !important;  /*Navbar link color */
+}
+
+.navbar-nav .nav-link:hover {
+    color: #aaa !important;  /*Navbar link hover color */
+}
+
+/* Footer Styles*/
+footer {
+    background-color: #403634; /* Footer background color*/
+    color: #1a0c0c; /* Text color*/
+    padding: 40px 0; /* Padding top and bottom*/
+    text-align: center;
+}
+
+.footer-links {
+    list-style-type: none;
+    padding-left: 0;
+  
+}
+
+
+
+.site-footer {
+    background-color: #343a40;
+    color: #fff;
+    padding: 40px 0;
+}
+
+.site-footer h5 {
+    color: #fff;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.footer-links {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    color: #ccc;
+}
+
+.feedback-section textarea {
+    width: 100%;
+    height: 100px;
+    resize: none;
+    margin-bottom: 10px;
+}
+
+.feedback-section button {
+    width: 100%;
+}
+
+.footer-social-icons a {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+.app-download img {
+    max-width: 150px;
+    margin-top: 10px;
+}
+.site-footer img {
+    max-width: 150px; /* Adjust the maximum width as per your preference*/
+    max-height: 50px; /* Adjust the maximum height as per your preference*/
+}
+body, html {
+    height: 100%;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  .bg-image {
+    /* The image used */
+    background-image: url("photographer.jpg");
+  
+    /* Add the blur effect */
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+  
+    /* Full height */
+    height: 100%;
+  
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  /* Position text in the middle of the page/image */

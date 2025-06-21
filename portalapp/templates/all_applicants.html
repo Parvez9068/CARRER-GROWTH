@@ -1,0 +1,58 @@
+{% extends 'base2.html' %}
+{% block title %}All Applicants{% endblock %}
+{% block body %}
+{% if messages %}
+<div class="container mt-4">
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+<div class="container">
+    <center><h2 style="height: 50px;padding-bottom: 10px;width: 100%;margin-bottom: 30px;color:white;background-color: #333;">All Applicants</h2></center>
+    {% for job, applicants in all_applicants.items %}
+        <div style="margin-bottom: 30px;">
+            <h4 style="text-transform: capitalize;color:black;background-color: #67b967;width: fit-content; text-align: center; border-radius: 5px;padding: 10px;">{{ job.title }}</h4>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Resume</th>
+                            <th>Status</th>
+                            <th> Action </th>
+                            <th>Management</th>
+                          
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for applicant in applicants %}
+                            <tr>
+                                <td>{{ applicant.name }}</td>
+                                <td>{{ applicant.email }}</td>
+                                <td><a href="{{ applicant.resume.url }}" target="_blank">{{ applicant.resume.name }}</a></td>
+                                <td>
+                                    {% if applicant.is_shortlisted %}
+                                        Shortlisted
+                                    {% else %}
+                                        Rejected
+                                    {% endif %}
+                                </td>
+                              <td><a href="/removeapplicant/{{ applicant.id }}" class="btn btn-danger btn-sm">Rejected</a>
+                                <a href="{% url 'save_applicant' applicant.id %}" class="btn btn-success btn-sm">Shortlised</a></td>
+                                <td><a href="/removeapplicants/{{ applicant.id }}" class="btn btn-danger btn-sm">Remove</a>
+
+                                <a href="{% url 'save_applicants' applicant.id %}" class="btn btn-success btn-sm">Save Applicants</a></td>
+                            </tr>   
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

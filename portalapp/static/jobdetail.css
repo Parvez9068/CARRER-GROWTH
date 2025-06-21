@@ -1,0 +1,61 @@
+body {
+    background-color: #1a72c9; /* Set a light background color */
+}
+h2{
+    text-transform: capitalize;
+    background-color: #007bff;
+    width: 200px;
+    text-align: center;
+    border: 2px;
+    border-style: solid;
+    border-radius: 10px;
+   
+}
+
+.job-details {
+    margin-top: 50px; /* Add space between the header and job details */
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); 
+    background-color: #007bff;/* Add a subtle shadow effect */
+}
+
+.job-title {
+    font-size: 32px; /* Increase font size for job title */
+    margin-bottom: 10px;
+    background-color: #007bff; /* Add space below job title */
+}
+
+.job-company {
+    font-size: 24px; /* Decrease font size for company name */
+    margin-bottom: 20px; /* Add more space below company name */
+}
+
+.job-description {
+    font-size: 20px; /* Decrease font size for job description */
+    margin-bottom: 20px; /* Add more space below job description */
+}
+
+.job-info {
+    font-size: 18px; /* Set font size for job information */
+    margin-bottom: 10px; /* Add space between each job info */
+}
+
+.job-requirements {
+    font-size: 18px; /* Set font size for job requirements */
+    margin-bottom: 20px; /* Add more space below job requirements */
+}
+
+.btn-primary {
+    background-color: #007bff; /* Set primary button background color */
+    border-color: #007bff; /* Set primary button border color */
+}
+
+.btn-secondary {
+    background-color: #6c757d; /* Set secondary button background color */
+    border-color: #6c757d; /* Set secondary button border color */
+}
+
+.btn-primary:hover,
+.btn-secondary:hover {
+    opacity: 0.9; /* Reduce opacity on hover for both buttons */
+}

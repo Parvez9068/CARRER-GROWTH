@@ -1,0 +1,44 @@
+body {
+    /* Set background color*/
+    background-color: #e4e9ee; 
+  }
+  .container {
+      padding: 20px;
+      padding-top: 20px;
+    
+  }
+  .card {
+      
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.2); /* Add shadow effect*/
+      background-color:black; 
+   
+  }
+  .form-control {
+      border-radius: 5px;
+      background-color: #505962; /* Set input field background color */
+      color: #dcdcdc; /* Set input field text color*/
+  }
+  .text-center{
+      padding-top: 10px;
+     
+  }
+  .btn-primary {
+      background-color: #006400; /* Set primary button background color*/
+      border-color:#006400; /* Set primary button border color */
+  }
+  .btn-secondary {
+      background-color: #6c757d; /* Set secondary button background color*/
+      border-color: #6c757d; /* Set secondary button border color*/
+  }
+  .btn-primary:hover,
+  .btn-secondary:hover {
+      background-color: #006400; /* Darker shade for primary button on hover */
+      border-color: #006400; /* Darker shade for secondary button on hover*/
+  }
+  label {
+      color: #dcdcdc; /* Set label text color*/ 
+  }
+  .text-center {
+      color: #dcdcdc; 
+  }

@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block title %}CareerGrowth | My Applications{% endblock %}
+{% block body %}
+{% if messages %}
+<div class="container mt-4">
+    {% for message in messages %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+<div class="container mt-3">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <h4 style="background-color: rgb(77, 153, 77); color: #fff; padding: 10px; border-radius: 5px; text-align: center;">My Submitted Applications</h4>
+            <div class="applications-list">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Job Title</th>
+                            <th scope="col">Company Name</th>
+                            <th scope="col">Remove</th>
+                            <th scope="col">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for application in applications %}
+                        <tr>
+                            <td>{{ application.job.title }}</td>
+                            <td>{{ application.job.company }}</td>
+                            <td>
+                                <form action="{% url 'remove_application' application.id %}" method="post">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-danger btn-sm">Remove</button>
+                                </form>
+                            </td>
+                            <td>
+                                {% if application.is_shortlisted %}
+                                    Shortlisted
+                                {% else %}
+                                    Rejected
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

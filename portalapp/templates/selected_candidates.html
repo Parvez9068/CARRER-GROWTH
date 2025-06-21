@@ -1,0 +1,51 @@
+{% extends 'base2.html' %}
+{% block title %}Selected Candidates{% endblock %}
+{% block body %}
+
+<div class="container">
+    <center><h2 style="height: 50px; padding-bottom: 10px; width: 100%; margin-bottom: 30px; color: white; background-color: #333;">Selected Candidates</h2></center>
+
+    {% if messages %}
+    <div class="alert alert-success" role="alert">
+        {% for message in messages %}
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <div style="overflow-x:auto;">
+        <table class="table" style="width: 100%; border-collapse: collapse;">
+            <thead>
+                <tr style="background-color: #da2222;">
+                    <th style="padding: 12px; text-align: left; color: rgb(58, 55, 55);">Job Title</th>
+                    <th style="padding: 12px; text-align: left; color: black;">Name</th>
+                    <th style="padding: 12px; text-align: left; color: black;">Email</th>
+                    <th style="padding: 12px; text-align: left; color: black;">Resume</th>
+                    <th style="padding: 12px; text-align: left; color: black;">Action</th>
+                    <th style="padding: 12px; text-align: left; color: black;">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for candidate in candidates %}
+                <tr>
+                    <td style="padding: 12px; text-transform: capitalize;color: #da2222;font-weight: 600;">{{ candidate.job.title }}</td>
+                    <td style="padding: 12px;">{{ candidate.name|title }}</td>
+                    <td style="padding: 12px;">{{ candidate.email }}</td>
+                    <td style="padding: 12px;"><a href="{{ candidate.resume.url }}" target="_blank">{{ candidate.resume.name }}</a></td>
+                    <td style="padding: 12px;">
+                        <form method="POST" action="{% url 'send_email_candidate' candidate.id %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-primary" style="padding: 8px 12px;">Send Email</button>
+                        </form>
+                    </td>
+                    <td style="padding: 12px;">
+                        <a href="/removecandidates/{{ candidate.id }}" class="btn btn-danger">Remove</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
